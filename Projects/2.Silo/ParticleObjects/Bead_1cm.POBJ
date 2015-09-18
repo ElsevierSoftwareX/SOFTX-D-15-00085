@@ -1,0 +1,30 @@
+Title: "Bead_D"
+Descp: "Steel_ball"
+
+Geometry_Specfications 
+
+Diameter: 0.80
+Density:  1600
+
+
+Particle_Particle
+
+COR:       0.45          
+Kn(N/cm):  320000.0
+Static_Friction:  0.30
+Kinetic_Friction: 0.30
+
+
+Particle_Surface
+
+COR:       0.45
+Kn(N/cm):  320000.0
+Static_Friction:  0.30 
+Kinetic_Friction: 0.30
+
+Particle_Lifter
+
+COR:       0.45
+Kn(N/cm):  320000.0
+Static_Friction:  0.40 
+Kinetic_Friction: 0.35

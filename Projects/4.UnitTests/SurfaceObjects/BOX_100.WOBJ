@@ -1,0 +1,42 @@
+Title: "Rectangle_Container"
+Descp: "Single_large_ground_surface"
+
+Geometry-Specfications
+
+NUM_VERTEX: 8
+
+1 0.000 0.000 0.000
+2 0.000 0.000 100.0
+3 100.0 0.000 100.0
+4 100.0 0.000 0.000
+5 0.000 100.0 0.000
+6 0.000 100.0 100.0
+7 100.0 100.0 100.0
+8 100.0 100.0 0.000
+
+
+NUM_SURFACES: 6
+
+2 "ONE"  Area_Tol: 1.0
+NUM_VERTEX: 4
+5 1 2 6
+
+3 "TWO" Area_Tol: 1.0
+NUM_VERTEX: 4
+6 2 3 7
+
+4 "THRE" Area_Tol: 1.0
+NUM_VERTEX: 4
+7 3 4 8
+
+4 "FOR" Area_Tol: 1.0
+NUM_VERTEX: 4
+8 4 1 5
+
+5 "FIV" Area_Tol: 1.0
+NUM_VERTEX: 4
+5 6 7 8
+
+6 "Ground" Area_Tol: 1.0
+NUM_VERTEX: 4
+4 3 2 1

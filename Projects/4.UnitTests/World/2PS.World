@@ -1,0 +1,96 @@
+Title: UNIT_TEST
+ModelType(Specfic|0:TC_COR|1:KN_COR):     0
+Simulation_Type(0=General,1=mill,2=silo): 0
+Particle_Type(0=sphere,1=poly,2=mixed):   0
+            
+_________________________________________________
+             1_Geometrical-Information
+              
+
+---------------------------------------
+ 1.1_World_Objects_(index__name)
+---------------------------------------
+Number: 1
+
+1 BOX_100
+
+
+---------------------------------------
+ 1.2_Particle_Objects_(index__name__number)
+---------------------------------------
+Number: 2
+
+1 Water_1cm_TC 1
+1 Rock_5cm_TC 1
+
+
+---------------------------------------
+ 1.3_Dynamic_Objects_(index__name)
+---------------------------------------
+
+Number: 0 Repeat: 0
+_________________________________________________
+
+              
+              
+_________________________________________________
+             2_Simulation_Setup
+
+Num_Particles:    2
+Delta_t(s):       1E-5
+ForceField(cm/s^2): 0.000  0.000000   0.000000 
+
+---------------------------------------------
+Rotation:         1
+RollRes:          0.000000
+GlobalDamp:       1.000
+VelLimit:         0.0
+_________________________________________________
+
+             
+             
+_________________________________________________
+            3_Spatial-Grid-Computation
+             
+             
+Origin:       -5.0  -5.0  -5.0
+World_Size:    100   100  100
+Cell_Size:     5.0   5.0   5.0
+
+_________________________________________________
+
+            
+_________________________________________________
+            4_Inital_Particle-Setup
+
+Read_FromFile: 1
+FileName: Impact2PS
+
+_________________________________________________
+
+                
+              
+_________________________________________________
+             5_Output_Options 
+             
+Display:                1     1    2.0
+View:                   0
+FPS:                    1
+GL_DEBUG                5
+File_write(Steps):      0
+Total_Time:             0.0
+IS_Time_Limit:          0
+IS_Energy_diss(steps):  0
+IS_Wall_forces(steps):  0
+_________________________________________________
+
+
+
+
+# Use this if you want a grid
+GridType(1=ran): 0                                        
+GridSize(X,Y,Z): 1      1     2
+Start(X,Y,Z):    0.55  33.50  0.55
+Space:           0.02  0.02  0.0
+Velocity:        0.000  -50.000 -25.000 
+

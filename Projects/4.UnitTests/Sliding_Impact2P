@@ -1,0 +1,6 @@
+#  P_ID   Size_Type   Pos(x,y,z)  Vel(x,y,z)     Acc(x,y,z)  *Orient(poly only)  AngVel(x,y,z) | MagVel(m/s)  MagAVel(m/s) MagAcc(m/s) 
+SpecType: 3
+time: 0
+  0          0        7.2   6.0  7.0    0.0  -100.0  0.0    1.0 0.010 0.0  -0.20    0.0  0.0  0.0   
+  1          1        10.0  7.4999  10.0   0.0  0.0     0.0    1.0 0.0  0.0  0.0     0.0  0.0  0.0    
+  

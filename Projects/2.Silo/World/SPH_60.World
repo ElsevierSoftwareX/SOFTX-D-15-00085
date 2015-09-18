@@ -1,0 +1,109 @@
+Title: "Douai_SILO"
+ModelType(Specfic|0:TC_COR|1:KN_COR):     1
+Simulation_Type(0=General,1=mill,2=silo): 2
+Particle_Type(0=sphere,1=poly,2=mixed):   0
+            
+_________________________________________________
+             1_Geometrical-Information
+              
+
+---------------------------------------
+ 1.1_World_Objects_(index__name)
+---------------------------------------
+Number: 4
+
+1 Tank_D
+2 Container_D
+3 Floor_60
+5 Hatch_D 
+
+---------------------------------------
+ 1.2_Particle_Objects_(index__name__number)
+---------------------------------------
+Number: 2
+
+1 Bead_1cm 1425
+1 Bead_1cm  525
+
+---------------------------------------
+ 1.3_Dynamic_Objects_(index__name)
+---------------------------------------
+
+Number: 2 Repeat: 0  
+1 Floor_Left_D
+2 Floor_Right_D 
+_________________________________________________
+
+              
+              
+_________________________________________________
+             2_Simulation_Setup
+
+Num_Particles:    1950
+Delta_t(s):       1.00E-5
+ForceField(cm/s): 0.000  -980.000000   0.000000 
+
+---------------------------------------------
+Rotation:         1
+RollRes:          0.0100
+GlobalDamp:       1.0
+VelLimit:         0.000
+_________________________________________________
+
+             
+             
+_________________________________________________
+            3_Spatial-Grid-Computation
+             
+             
+Origin:       -1.0  -1.0  -1.0
+World_Size:    128   128  16
+Cell_Size:     1.0   1.0   1.0
+
+_________________________________________________
+
+            
+_________________________________________________
+            4_Inital_Particle-Setup
+
+Read_FromFile: 1
+FileName: Start_SPH_60
+
+_________________________________________________
+
+                
+              
+_________________________________________________
+             5_Output_Options
+             
+Display:           1 0
+View:              0
+FPS:               50
+GL_DEBUG           0
+File_write(0=none) 0
+total_Time:        4.0
+time_limit:        0
+energy_diss:       0 
+wall_forces:       0
+_______________________________________________
+
+
+_________________________________________________
+          6_Simulation_Specfic_Options
+       
+Hatch_mode:        0
+Flow_counter:      1 8696
+kill_after:        0
+_________________________________________________
+
+
+#END OF INPUT
+
+FileName: Start_POL_60
+
+# Use this if you want a grid
+GridType(1=ran): 1                                        
+GridSize(X,Y,Z): 13      30     5
+Start(X,Y,Z):    0.55  30.60  0.55
+Space:           0.05  0.05  0.20
+Velocity:        0.000  -50.000 25.000 

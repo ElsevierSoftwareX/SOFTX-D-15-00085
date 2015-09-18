@@ -1,0 +1,28 @@
+Title: "Sphere"
+Descp: "SteelBall"
+
+Geometry_Specfications 
+
+Diameter: 1.0
+Density:  1000
+
+Particle_Particle
+
+COR: 1.0
+KN:  4.0E5
+Static_Friction:  0.70
+Kinetic_Friction: 0.70
+
+Particle_Surface
+
+COR: 1.0
+KN:  4.0E5
+Static_Friction:  0.30
+Kinetic_Friction: 0.30
+
+Particle_Lifter
+
+COR: 0.30
+KN:  4.0E7
+Static_Friction:  0.25
+Kinetic_Friction: 0.25

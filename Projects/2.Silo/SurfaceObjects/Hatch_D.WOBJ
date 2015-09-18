@@ -1,0 +1,19 @@
+Title: "Rectangle_Container"
+Descp: "Single_large_ground_surface"
+
+Geometry-Specfications
+
+NUM_VERTEX: 4
+
+1 5.0 30.00 0.0
+4 5.0 30.00 5.0
+3 9.0 30.00 5.0
+2 9.0 30.00 0.0
+
+
+
+NUM_SURFACES: 1
+
+1 "Ground" Area_Tol: 1.0
+NUM_VERTEX: 4
+4 3 2 1

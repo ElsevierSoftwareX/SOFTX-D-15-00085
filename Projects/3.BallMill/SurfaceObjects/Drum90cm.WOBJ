@@ -1,0 +1,20 @@
+Title: "DRUM_MILL"
+Descp: "90CM"
+
+Geometry-Specfications
+
+NUM_VERTEX: 0
+
+NUM_SURFACES: 1
+
+-1 "DRUM" 
+Diameter: 90.0
+Height: 15.10
+Top:    true 
+Bot:    true
+
+normalT: 0.0 0.0 -1.0
+normalB: 0.0 0.0  1.0
+Offset:  0.0 0.0 0.0
+
+

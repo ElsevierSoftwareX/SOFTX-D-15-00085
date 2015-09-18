@@ -1,0 +1,43 @@
+Title: "dummy"
+Descp: "Static"
+
+Geometry_Specfications: 1
+AXIS: 0.0  1.0 1.0 
+COM:  50.0 2.5 2.5
+B_R:  7.10
+
+NUM_VERTEX: 8
+
+1 0.00   0.00   5.00
+2 100.0  0.00  5.00
+3 100.0  0.00  0.00
+4 0.00   0.00  0.00
+5 0.00   5.00   5.00
+6 100.0  5.00  5.00
+7 100.0  5.00  0.00
+8 0.00   5.00  0.00
+
+
+
+
+
+NUM_FACES: 3
+
+1 "ONE"
+NUM_VERTEX: 4
+1 5 6 2
+
+3 "THREE"
+NUM_VERTEX: 4
+3 7 8 4
+
+5 "FIVE"
+NUM_VERTEX: 4
+7 6 5 8
+
+NUM_EDGES: 2
+5 6 
+7 8 
+
+
+

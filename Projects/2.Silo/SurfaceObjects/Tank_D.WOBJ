@@ -1,0 +1,41 @@
+Title: "Silo_Paper"
+Descp: "TOP"
+
+Geometry-Specfications
+
+NUM_VERTEX: 8
+
+1 0.00  30.00  0.00
+2 0.00  30.00  5.00
+3 14.0  30.00  5.00
+4 14.0  30.00  0.00
+5 0.00  128.0  0.00
+6 0.00  128.0  5.00
+7 14.0  128.0  5.00
+8 14.0  128.0  0.00
+
+NUM_SURFACES: 5
+
+2 "ONE" Area_Tol: 1.0
+NUM_VERTEX: 4
+5 1 2 6
+
+3 "TWO" Area_Tol: 1.0
+NUM_VERTEX: 4
+6 2 3 7
+
+4 "THRE" Area_Tol: 1.0
+NUM_VERTEX: 4
+7 3 4 8
+
+4 "FOR" Area_Tol: 1.0
+NUM_VERTEX: 4
+8 4 1 5
+
+5 "FIV" Area_Tol: 1.0
+NUM_VERTEX: 4
+5 6 7 8
+
+6 "Ground" Area_Tol: 1.0
+NUM_VERTEX: 4
+4 3 2 1

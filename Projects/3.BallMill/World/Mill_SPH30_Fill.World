@@ -1,0 +1,93 @@
+Title: "newspec"
+ModelType(Specfic|0:TC_COR|1:KN_COR):   1
+Simulation_Type(0=Gen,1=mill,3=silo):   1
+Particle_Type(0=sphere,1=poly,2=mixed): 0
+
+_________________________________________________
+              1_Geometrical-Information
+
+---------------------------------------
+ World_Objects_(index__name)
+---------------------------------------
+Number: 1
+
+1 Drum90cm
+
+---------------------------------------
+ Particle_Objects_(index__name__number)
+---------------------------------------
+Number: 1
+
+1 Ball_5cmFill  242
+---------------------------------------
+ Lifter_Objects_(index__name)
+---------------------------------------
+
+Number: 1 Repeat: 8
+
+1 Square_Lifter16
+
+_________________________________________________
+
+
+
+_________________________________________________
+              2_Simulation_Setup
+
+Num_Particles:    242
+Delta_t(s):       1.00E-5
+ForceField(cm/s): 0.000  -980.000000   0.000000 
+
+---------------------------------------------
+Use_Rotation:      1
+RollRes:           0.00
+GlobalDamp(<1.0):  1.0000
+VelLimit(Ignore):  0.0
+_________________________________________________
+
+
+_________________________________________________
+             3_Spatial-Grid-Computation
+             
+Origin:        -5.0  -5.0  -5.0
+World_Size:    100.0   100.0  30.0
+Cell_Size:     5.0   5.0    5.0
+
+_________________________________________________
+
+_________________________________________________
+             4_Inital_Particle-Setup
+             
+Read_FromFile:  0
+SetpUp(0=grid,2=fill): 2 
+launch_Vel: 10.0 -200.0 10.0
+_________________________________________________
+
+
+_________________________________________________
+             5_Output_Options 
+             
+Display:                1     1    0.50
+View:                   0
+FPS:                    30
+GL_DEBUG                0
+File_write(Steps):      0
+Total_Time:             0.0
+IS_Time_Limit:          0
+IS_Energy_diss(steps):  0
+IS_Wall_forces(steps):  0
+_________________________________________________
+
+
+_________________________________________________
+          6_Simulation_Specfic_Options
+       
+Power(Revs):   1
+Total(Revs):   5
+Speed(RPM):    22
+_________________________________________________
+
+
+
+
+

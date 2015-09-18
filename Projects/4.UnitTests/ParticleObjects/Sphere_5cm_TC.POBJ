@@ -1,0 +1,28 @@
+Title: "Sphere"
+Descp: "Rock"
+
+Geometry_Specfications 
+
+Diameter: 5.0
+Density:  7640
+
+Particle_Particle
+
+COR:       0.50
+TC:        1.0E-3
+Friction:  0.40
+Friction:  0.40
+
+Particle_Surface
+
+COR:       0.50
+TC:        1.0E-3
+Friction:  0.40
+Friction:  0.40
+
+Particle_Lifter
+
+COR:       1.0
+TC:        1.0E-3
+Friction:  0.40
+Friction:  0.30

@@ -1,0 +1,96 @@
+Title: "newspec"
+ModelType(Specfic|0:TC_COR|1:KN_COR):   1
+Simulation_Type(0=Gen,1=mill,2=silo):   1
+Particle_Type(0=sphere,1=poly,2=mixed): 0
+
+_________________________________________________
+              1_Geometrical-Information
+
+---------------------------------------
+ World_Objects_(index__name)
+---------------------------------------
+Number: 1
+
+1 Drum90cm
+
+---------------------------------------
+ Particle_Objects_(index__name__number)
+---------------------------------------
+Number: 1
+
+1 Ball_5cm  242
+---------------------------------------
+ Lifter_Objects_(index__name)
+---------------------------------------
+
+Number: 0 Repeat: 0
+
+
+_________________________________________________
+
+
+
+_________________________________________________
+              2_Simulation_Setup
+
+Num_Particles:    242
+Delta_t(s):       1.00E-5
+ForceField(cm/s): 0.000  -980.000000   0.000000 
+
+---------------------------------------------
+Use_Rotation:      1
+RollRes:           0.000
+GlobalDamp(<1.0):  1.0000
+VelLimit(Ignore):  0.0
+_________________________________________________
+
+
+_________________________________________________
+             3_Spatial-Grid-Computation
+             
+Origin:        -5.0  -5.0  -5.0
+World_Size:    100.0   100.0  30.0
+Cell_Size:     5.0   5.0    5.0
+
+_________________________________________________
+
+
+_________________________________________________
+             4_Inital_Particle-Setup
+             
+Read_FromFile:  1
+File_Name: StartMill_SPH30_NoLifter
+_________________________________________________
+
+
+_________________________________________________
+             5_Output_Options 
+             
+Display:                1     1    0.50
+View:                   0
+FPS:                    30
+GL_DEBUG                0
+File_write(Steps):      0
+Total_Time:             0.0
+IS_Time_Limit:          0
+IS_Energy_diss(steps):  0
+IS_Wall_forces(steps):  0
+_________________________________________________
+
+
+_________________________________________________
+          6_Simulation_Specfic_Options
+       
+Power(Revs):   1
+Total(Revs):   5
+Speed(RPM):    22
+_________________________________________________
+
+GridType(1=ran): 0                                        
+GridSize(X,Y,Z): 15    8     2
+Start(X,Y,Z):    5.10  45.0  5.10
+Space:           0.05  0.05  0.05
+Velocity:        -25.000  0.000 -25.00 
+
+
+
