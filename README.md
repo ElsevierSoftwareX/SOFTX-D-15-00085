@@ -4,7 +4,7 @@ GPU based discrete element framework (spheres and polyhedra (experimential))
 
 Graphics card (NVIDIA only): Atleast CUDA Compute 3.0 (Kepler only) 
 Software requirements: CUDA 5.5 and above
-                       Python 2.7
+                       C++ compiler
 
 Compile on machine: 
 -------------------
