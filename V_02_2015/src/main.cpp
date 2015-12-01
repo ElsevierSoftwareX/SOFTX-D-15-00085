@@ -4,7 +4,7 @@
 #include "Graphics/Graphics.h"
 
 #include <time.h>
-#include <timeval-utils.h>
+
 
 
 /* 17/01/2015: Comments and clean up
@@ -519,7 +519,8 @@ void Set_SimInfo()
    m_InitPos.start           = m_KSimulationData->get_InitPosGrid().start;
    m_InitPos.space           = m_KSimulationData->get_InitPosGrid().space;
    m_InitPos.grid_type       = m_KSimulationData->get_InitPosGrid().grid_type;
-   m_InitPos.threads_perBlock = 1024;
+   m_InitPos.threads_perBlock = 1024; // KEPLER ARCHITECTURE
+   //m_InitPos.threads_perBlock = 196; // MAXWELL ARCHITECTURE
 
    if(m_sim_particle_type==1)
    {

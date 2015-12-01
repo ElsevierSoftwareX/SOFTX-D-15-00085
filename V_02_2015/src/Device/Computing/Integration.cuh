@@ -116,6 +116,7 @@ __global__ void Integrate_Euler_NonSymmetry(
           else
           {
             ang_acc = Get_Angular_Acc(index,P_ObjectType[index],forceL,position_ornt[index]);
+            // Additional Accuracy Get_EulerMomentTerms
           }
 
 

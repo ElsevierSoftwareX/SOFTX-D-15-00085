@@ -484,7 +484,7 @@ __device__ POBJ_ROT RotatePolyhedra( uint P_type, float3 Pos_P,
                       /* Return Inertia*Force */
 /*___________________________________________________________________________*/
 __device__ float3 Get_Angular_Acc( uint p_index, uint p_type, float3 forceL,
-		                           Quaterion position_ornt )
+		                           Quaterion position_ornt, float3 velocity_ang = make_float3(0.0f))
 {
   /*-----------------------------------------------------------------------------*/
 	  	             /* Get current inertia tensor */
@@ -567,6 +567,9 @@ __device__ float3 Get_Angular_Acc( uint p_index, uint p_type, float3 forceL,
 
      /* Get the resultant angular acceleration and orientation */
 	 float angA[3];
+	 float HLV[3];
+	 float3 H;
+
 
 	 float forceLV[3];
 
@@ -574,26 +577,166 @@ __device__ float3 Get_Angular_Acc( uint p_index, uint p_type, float3 forceL,
 	 forceLV[1] = forceL.y;
 	 forceLV[2] = forceL.z;
 
+	 float velocity_angLV[3];
+
+	 velocity_angLV[0] = velocity_ang.x;
+	 velocity_angLV[1] = velocity_ang.y;
+	 velocity_angLV[2] = velocity_ang.z;
 
      /* Get angular acceleration */
 	 for ( unsigned int i = 0; i < 3; i++ )
 	 {
 	  	float sum = 0;
+	  	float sum_H = 0;
 
 	  	for ( unsigned int k = 0; k < 3; k++ )
 	  	{
-	       sum += (IN[ i*3 + k ] * (forceLV[ k ]));
+	  		sum += (IN[ i*3 + k ] * (forceLV[ k ]));
+	  		sum_H += (IN[ i*3 + k ] * (velocity_angLV[ k ]));
 
 	  	}
 	    angA[i] = sum;
-
+	    HLV[i] = sum_H;
 	  }
+	  H = make_float3(HLV[0],HLV[1],HLV[2]);
+	  H = cross(velocity_ang,H);
 
 	  /* Update Dynamics Information EQ 7 */
 	  return make_float3(angA[0],angA[1],angA[2]);
 
 
 }
+
+
+__device__ EulerMoment Get_EulerMomentTerms( uint p_index, uint p_type, float3 forceL,
+		                           Quaterion position_ornt, float3 velocity_ang = make_float3(0.0f))
+{
+  /*-----------------------------------------------------------------------------*/
+	  	             /* Get current inertia tensor */
+  /*-----------------------------------------------------------------------------*/
+
+    Quaterion Q  = position_ornt;
+    Quaterion QT = conjugateD(Q);
+
+    float IC [9];
+    float RQ [9];
+
+    /* Get current rotation matrix from Orientation Quart */
+    RQ[0] = ( Q.w*Q.w + Q.x*Q.x - Q.y*Q.y - Q.z*Q.z);
+    RQ[1] = ( 2.0f*Q.x*Q.y - 2.0f*Q.w*Q.z);
+	RQ[2] = ( 2.0f*Q.x*Q.z + 2.0f*Q.w*Q.y );
+	RQ[3] = ( 2.0f*Q.x*Q.y + 2.0f*Q.w*Q.z );
+	RQ[4] = ( Q.w*Q.w - Q.x*Q.x + Q.y*Q.y - Q.z*Q.z);
+	RQ[5] = ( 2.0f*Q.y*Q.z - 2.0f*Q.w*Q.x )  ;
+	RQ[6] = ( 2.0f*Q.x*Q.z -2.0f*Q.w*Q.y );
+	RQ[7] = ( 2.0f*Q.y*Q.z + 2.0f*Q.w*Q.x );
+    RQ[8] = ( Q.w*Q.w - Q.x*Q.x - Q.y*Q.y + Q.z*Q.z);
+
+    /* R(t)xI(0) */
+	for (unsigned int i = 0; i < 3; i++)
+	{
+	   for (unsigned int j = 0; j < 3; j++)
+	   {
+	  		  float sum = 0;
+
+	  		  for (unsigned int k = 0; k < 3; k++)
+	  		  {
+	  		      sum += ( RQ[ i*3 + k ] * (ParticleObject[p_type].InertiaT [ k*3 + j ]));
+
+	  		  }
+
+	  		  IC[i*3 + j] = sum;
+	    }
+	 }
+
+
+	 float RQT[9];
+
+	 RQT[0] = RQ[0] ;
+	 RQT[1] = RQ[3] ;
+	 RQT[2] = RQ[6];
+
+	 RQT[3] = RQ[1] ;
+	 RQT[4] = RQ[4];
+	 RQT[5] = RQ[7];
+
+	 RQT[6] = RQ[2] ;
+	 RQT[7] = RQ[5] ;
+	 RQT[8] = RQ[8] ;
+
+
+	 /* R(t)xI(0)xRT(t) */
+	    float IN[9];
+	 for ( unsigned int i = 0; i < 3; i++ )
+	 {
+	  	 for (unsigned int j = 0; j < 3; j++)
+	     {
+	  	    float sum = 0;
+
+	  		for (unsigned int k = 0; k < 3; k++)
+	  		{
+	  		      sum += ( (IC[ k*3 + j ])*RQT[ i*3 + k ]);
+
+	  		}
+
+	  		IN[i*3 + j] = sum;
+	     }
+	 }
+
+
+//	    printf("In\n");
+//	    printf("%f %f %f \n",IN[0],IN[1],IN[2]);
+//	    printf("%f %f %f \n",IN[3],IN[4],IN[5]);
+//	    printf("%f %f %f \n",IN[6],IN[7],IN[8]);
+//	    printf("\n");
+
+     /* Get the resultant angular acceleration and orientation */
+	 float angA[3];
+	 float HLV[3];
+	 float3 H;
+
+
+	 float forceLV[3];
+
+	 forceLV[0] = forceL.x;
+	 forceLV[1] = forceL.y;
+	 forceLV[2] = forceL.z;
+
+	 float velocity_angLV[3];
+
+	 velocity_angLV[0] = velocity_ang.x;
+	 velocity_angLV[1] = velocity_ang.y;
+	 velocity_angLV[2] = velocity_ang.z;
+
+     /* Get angular acceleration */
+	 for ( unsigned int i = 0; i < 3; i++ )
+	 {
+	  	float sum = 0;
+	  	float sum_H = 0;
+
+	  	for ( unsigned int k = 0; k < 3; k++ )
+	  	{
+	  		sum += (IN[ i*3 + k ] * (forceLV[ k ]));
+	  		sum_H += (IN[ i*3 + k ] * (velocity_angLV[ k ]));
+
+	  	}
+	    angA[i] = sum;
+	    HLV[i] = sum_H;
+	  }
+	  H = make_float3(HLV[0],HLV[1],HLV[2]);
+	  H = cross(velocity_ang,H);
+
+
+	  EulerMoment Result;
+	  Result.ang_acc = make_float3(angA[0],angA[1],angA[2]);
+	  Result.wxH = H;
+
+	  /* Update Dynamics Information EQ 7 */
+	  return Result;
+
+
+}
+
 
 
 inline Quaterion normalise(Quaterion Q1)

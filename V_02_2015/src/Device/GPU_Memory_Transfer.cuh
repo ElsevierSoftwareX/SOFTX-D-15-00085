@@ -64,7 +64,11 @@ struct Forces
   float3 torque;
 };
 
-
+struct EulerMoment
+{
+  float3 ang_acc;
+  float3 wxH;
+};
 
 
 /*---------------------------------------------------------------------------*/

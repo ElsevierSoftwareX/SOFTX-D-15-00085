@@ -2743,6 +2743,8 @@ void Device_Get_P_Velocity( float3 *H_Vel, float3 *H_Rvel, int Flag,
 
 	cudaDeviceSynchronize();
     cudaFree( d_vel );
+    cudaFree( d_ptype );
+    cudaFree( d_PID );
 
     if(Flag==1)
     {
